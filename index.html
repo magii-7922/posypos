@@ -82,6 +82,7 @@
       padding: 0 16px; font-weight: 800; border-radius: 12px;
     }
     .secondary { min-height: 48px; padding: 0 12px; font-weight: 800; background: var(--card); }
+    .session .secondary { margin-top: 8px; width: 100%; }
     .danger { background: none; border: 0; color: var(--danger); font-weight: 800; min-height: 48px; }
     .tabs {
       position: fixed; left: 0; right: 0; bottom: 0;
@@ -164,9 +165,9 @@
     const EXPONENT = { HKD:2, CNY:2, USD:2, MOP:2, TWD:2, JPY:0, EUR:2, GBP:2, SGD:2, AUD:2, KRW:0, THB:2 };
     const SYMBOL = { HKD:"HK$", CNY:"¥", USD:"US$", MOP:"MOP$", TWD:"NT$", JPY:"JP¥", EUR:"€", GBP:"£", SGD:"S$", AUD:"A$", KRW:"₩", THB:"฿" };
     const I18N = {
-      "zh-Hant": {"appName":"攤位收銀","offline":"資料只存在這部裝置，沒有網路也能收銀。","tabs":{"sell":"收銀","products":"貨品","sales":"銷售","settings":"設定"},"currency":{"HKD":"港幣","CNY":"人民幣","USD":"美元","MOP":"澳門幣","TWD":"新台幣","JPY":"日圓","EUR":"歐元","GBP":"英鎊","SGD":"新加坡幣","AUD":"澳幣","KRW":"韓圓","THB":"泰銖"},"sell":{"emptyTitle":"還沒有貨品","emptyBody":"先加入貨品和價錢，攤位上一點就能入單。","goProducts":"去新增貨品"},"price":{"missing":"未定價","needRate":"未設匯率","converted":"換算"},"cart":{"title":"本單","empty":"還沒有點選貨品","clear":"清空本單","checkout":"入帳","total":"合計","tendered":"實收","change":"找零","exact":"實收剛好","insufficient":"實收少於合計","needTendered":"請輸入實收金額","close":"關閉","confirmClear":"清空這一單？","checkedOut":"已入帳，找零 {{change}}","missingPrice":"{{name}} 沒有這個幣別的價錢","missingRate":"請先在設定填寫{{currency}}匯率","cannotAdd":"這件貨品現在不能用{{currency}}結帳"},"product":{"new":"新增貨品","edit":"編輯貨品","name":"名稱","namePlaceholder":"例如：貼紙、小卡","prices":"各幣別價錢","priceHint":"留空代表這個幣別沒有自己的標價。結帳時會用港幣價，再按你設定的匯率換算。","image":"照片","pickImage":"選擇照片","removeImage":"移除照片","save":"儲存","delete":"刪除貨品","deleteConfirm":"刪除後不能還原。已入帳的銷售紀錄會保留。","nameRequired":"請填名稱","priceInvalid":"價錢格式不正確"},"products":{"empty":"尚未登記貨品","add":"新增貨品"},"sales":{"title":"擺攤紀錄","empty":"這一檔還沒有入帳","hint":"每一檔分開列出合計和單據。","totals":"各幣別合計","quantities":"貨品銷量","receipts":"單據","change":"找零 {{amount}}","qty":"{{count}} 件"},"session":{"new":"開新一檔","confirmNew":"結束這一檔。之後的入帳會計入新的一檔，這一檔的單據會留在列表裡。","current":"進行中","unnamed":"未命名攤位","empty":"這一檔還沒有入帳"},"settings":{"stallName":"攤位名稱","stallPlaceholder":"例如：週末市集、漫畫節","saveName":"儲存名稱","nameSaved":"已儲存攤位名稱","language":"語言","currencies":"結帳幣別","baseHint":"港幣是標價基準，不能關閉。其他幣別可以各自標價；沒有標價時，用下面的匯率從港幣換算。","rateTitle":"手動匯率","rateHint":"匯率由你自己填，不會連上網抓即時價。填 100 港幣可以換成多少。","per100":"100 港幣 =","saveRate":"儲存","clearRate":"清除","rateInvalid":"請輸入大於 0 的金額","rateSaved":"已儲存","rateCleared":"已清除"},"common":{"cancel":"取消","delete":"刪除"}},
-      "zh-Hans": {"appName":"摊位收银","offline":"数据只存在这台设备，没有网络也能收银。","tabs":{"sell":"收银","products":"货品","sales":"销售","settings":"设置"},"currency":{"HKD":"港币","CNY":"人民币","USD":"美元","MOP":"澳门币","TWD":"新台币","JPY":"日元","EUR":"欧元","GBP":"英镑","SGD":"新加坡元","AUD":"澳元","KRW":"韩元","THB":"泰铢"},"sell":{"emptyTitle":"还没有货品","emptyBody":"先加入货品和价格，摊位上一点就能入单。","goProducts":"去新增货品"},"price":{"missing":"未定价","needRate":"未设汇率","converted":"换算"},"cart":{"title":"本单","empty":"还没有点选货品","clear":"清空本单","checkout":"入账","total":"合计","tendered":"实收","change":"找零","exact":"实收刚好","insufficient":"实收少于合计","needTendered":"请输入实收金额","close":"关闭","confirmClear":"清空这一单？","checkedOut":"已入账，找零 {{change}}","missingPrice":"{{name}} 没有这个币别的价格","missingRate":"请先在设置填写{{currency}}汇率","cannotAdd":"这件货品现在不能用{{currency}}结账"},"product":{"new":"新增货品","edit":"编辑货品","name":"名称","namePlaceholder":"例如：贴纸、小卡","prices":"各币别价格","priceHint":"留空代表这个币别没有自己的标价。结账时会用港币价，再按你设置的汇率换算。","image":"照片","pickImage":"选择照片","removeImage":"移除照片","save":"保存","delete":"删除货品","deleteConfirm":"删除后不能还原。已入账的销售记录会保留。","nameRequired":"请填写名称","priceInvalid":"价格格式不正确"},"products":{"empty":"尚未登记货品","add":"新增货品"},"sales":{"title":"摆摊记录","empty":"这一档还没有入账","hint":"每一档分开列出合计和单据。","totals":"各币别合计","quantities":"货品销量","receipts":"单据","change":"找零 {{amount}}","qty":"{{count}} 件"},"session":{"new":"开新一档","confirmNew":"结束这一档。之后的入账会计入新的一档，这一档的单据会留在列表里。","current":"进行中","unnamed":"未命名摊位","empty":"这一档还没有入账"},"settings":{"stallName":"摊位名称","stallPlaceholder":"例如：周末市集","saveName":"保存名称","nameSaved":"已保存摊位名称","language":"语言","currencies":"结账币别","baseHint":"港币是标价基准，不能关闭。其他币别可以各自标价；没有标价时，用下面的汇率从港币换算。","rateTitle":"手动汇率","rateHint":"汇率由你自己填写，不会联网抓实时价。填写 100 港币可以换成多少。","per100":"100 港币 =","saveRate":"保存","clearRate":"清除","rateInvalid":"请输入大于 0 的金额","rateSaved":"已保存","rateCleared":"已清除"},"common":{"cancel":"取消","delete":"删除"}},
-      "en": {"appName":"Stall POS","offline":"Data stays on this device. Checkout works without a network.","tabs":{"sell":"Sell","products":"Items","sales":"Sales","settings":"Settings"},"currency":{"HKD":"HKD","CNY":"CNY","USD":"USD","MOP":"MOP","TWD":"TWD","JPY":"JPY","EUR":"EUR","GBP":"GBP","SGD":"SGD","AUD":"AUD","KRW":"KRW","THB":"THB"},"sell":{"emptyTitle":"No items yet","emptyBody":"Add items and prices, then tap them at the stall to build an order.","goProducts":"Add an item"},"price":{"missing":"No price","needRate":"No rate","converted":"Converted"},"cart":{"title":"This order","empty":"Nothing selected yet","clear":"Clear order","checkout":"Save sale","total":"Total","tendered":"Received","change":"Change","exact":"Exact amount","insufficient":"Received is less than the total","needTendered":"Enter the amount received","close":"Close","confirmClear":"Clear this order?","checkedOut":"Saved. Change {{change}}","missingPrice":"{{name}} has no price in this currency","missingRate":"Set a {{currency}} rate in Settings first","cannotAdd":"This item cannot be charged in {{currency}} yet"},"product":{"new":"New item","edit":"Edit item","name":"Name","namePlaceholder":"e.g. sticker, print","prices":"Prices by currency","priceHint":"Leave a currency blank if it has no own price. Checkout will convert the HKD price with your rate.","image":"Photo","pickImage":"Choose photo","removeImage":"Remove photo","save":"Save","delete":"Delete item","deleteConfirm":"This cannot be undone. Sales already recorded stay in the report.","nameRequired":"Enter a name","priceInvalid":"That price format is not valid"},"products":{"empty":"No items yet","add":"New item"},"sales":{"title":"Stall records","empty":"No sales in this stall yet","hint":"Each stall keeps its own totals and receipts.","totals":"Totals by currency","quantities":"Quantity sold","receipts":"Receipts","change":"Change {{amount}}","qty":"{{count}}"},"session":{"new":"Start a new stall","confirmNew":"End this stall. Later sales go to the new one. These receipts stay in the list.","current":"In progress","unnamed":"Unnamed stall","empty":"No sales in this stall yet"},"settings":{"stallName":"Stall name","stallPlaceholder":"e.g. weekend market","saveName":"Save name","nameSaved":"Stall name saved","language":"Language","currencies":"Checkout currencies","baseHint":"HKD is the base price and stays on. Other currencies can have their own prices. If a price is missing, the rate below converts from HKD.","rateTitle":"Manual rates","rateHint":"You type the rate. The app does not fetch a live rate. Enter how much 100 HKD converts to.","per100":"100 HKD =","saveRate":"Save","clearRate":"Clear","rateInvalid":"Enter an amount greater than 0","rateSaved":"Saved","rateCleared":"Cleared"},"common":{"cancel":"Cancel","delete":"Delete"}}
+      "zh-Hant": {"appName":"攤位收銀","offline":"資料只存在這部裝置，沒有網路也能收銀。","tabs":{"sell":"收銀","products":"貨品","sales":"銷售","settings":"設定"},"currency":{"HKD":"港幣","CNY":"人民幣","USD":"美元","MOP":"澳門幣","TWD":"新台幣","JPY":"日圓","EUR":"歐元","GBP":"英鎊","SGD":"新加坡幣","AUD":"澳幣","KRW":"韓圓","THB":"泰銖"},"sell":{"emptyTitle":"還沒有貨品","emptyBody":"先加入貨品和價錢，攤位上一點就能入單。","goProducts":"去新增貨品"},"price":{"missing":"未定價","needRate":"未設匯率","converted":"換算"},"cart":{"title":"本單","empty":"還沒有點選貨品","clear":"清空本單","checkout":"入帳","total":"合計","tendered":"實收","change":"找零","exact":"實收剛好","insufficient":"實收少於合計","needTendered":"請輸入實收金額","close":"關閉","confirmClear":"清空這一單？","checkedOut":"已入帳，找零 {{change}}","missingPrice":"{{name}} 沒有這個幣別的價錢","missingRate":"請先在設定填寫{{currency}}匯率","cannotAdd":"這件貨品現在不能用{{currency}}結帳"},"product":{"new":"新增貨品","edit":"編輯貨品","name":"名稱","namePlaceholder":"例如：貼紙、小卡","prices":"各幣別價錢","priceHint":"留空代表這個幣別沒有自己的標價。結帳時會用港幣價，再按你設定的匯率換算。","image":"照片","pickImage":"選擇照片","removeImage":"移除照片","save":"儲存","delete":"刪除貨品","deleteConfirm":"刪除後不能還原。已入帳的銷售紀錄會保留。","nameRequired":"請填名稱","priceInvalid":"價錢格式不正確"},"products":{"empty":"尚未登記貨品","add":"新增貨品"},"sales":{"title":"擺攤紀錄","empty":"這一檔還沒有入帳","hint":"每一檔分開列出合計和單據。","totals":"各幣別合計","quantities":"貨品銷量","receipts":"單據","change":"找零 {{amount}}","qty":"{{count}} 件"},"session":{"new":"開新一檔","confirmNew":"結束這一檔。之後的入帳會計入新的一檔，這一檔的單據會留在列表裡。","current":"進行中","unnamed":"未命名攤位","empty":"這一檔還沒有入帳"},"pdf":{"session":"輸出這一檔 PDF","receipt":"輸出這張單據","sessionTitle":"擺攤總單","receiptTitle":"單據","received":"實收","hint":"會產生 PDF。手機請在分享畫面選擇「儲存到檔案」。","failed":"PDF 未能產生，請再試一次"},"settings":{"stallName":"攤位名稱","stallPlaceholder":"例如：週末市集、漫畫節","saveName":"儲存名稱","nameSaved":"已儲存攤位名稱","language":"語言","currencies":"結帳幣別","baseHint":"港幣是標價基準，不能關閉。其他幣別可以各自標價；沒有標價時，用下面的匯率從港幣換算。","rateTitle":"手動匯率","rateHint":"匯率由你自己填，不會連上網抓即時價。填 100 港幣可以換成多少。","per100":"100 港幣 =","saveRate":"儲存","clearRate":"清除","rateInvalid":"請輸入大於 0 的金額","rateSaved":"已儲存","rateCleared":"已清除"},"common":{"cancel":"取消","delete":"刪除"}},
+      "zh-Hans": {"appName":"摊位收银","offline":"数据只存在这台设备，没有网络也能收银。","tabs":{"sell":"收银","products":"货品","sales":"销售","settings":"设置"},"currency":{"HKD":"港币","CNY":"人民币","USD":"美元","MOP":"澳门币","TWD":"新台币","JPY":"日元","EUR":"欧元","GBP":"英镑","SGD":"新加坡元","AUD":"澳元","KRW":"韩元","THB":"泰铢"},"sell":{"emptyTitle":"还没有货品","emptyBody":"先加入货品和价格，摊位上一点就能入单。","goProducts":"去新增货品"},"price":{"missing":"未定价","needRate":"未设汇率","converted":"换算"},"cart":{"title":"本单","empty":"还没有点选货品","clear":"清空本单","checkout":"入账","total":"合计","tendered":"实收","change":"找零","exact":"实收刚好","insufficient":"实收少于合计","needTendered":"请输入实收金额","close":"关闭","confirmClear":"清空这一单？","checkedOut":"已入账，找零 {{change}}","missingPrice":"{{name}} 没有这个币别的价格","missingRate":"请先在设置填写{{currency}}汇率","cannotAdd":"这件货品现在不能用{{currency}}结账"},"product":{"new":"新增货品","edit":"编辑货品","name":"名称","namePlaceholder":"例如：贴纸、小卡","prices":"各币别价格","priceHint":"留空代表这个币别没有自己的标价。结账时会用港币价，再按你设置的汇率换算。","image":"照片","pickImage":"选择照片","removeImage":"移除照片","save":"保存","delete":"删除货品","deleteConfirm":"删除后不能还原。已入账的销售记录会保留。","nameRequired":"请填写名称","priceInvalid":"价格格式不正确"},"products":{"empty":"尚未登记货品","add":"新增货品"},"sales":{"title":"摆摊记录","empty":"这一档还没有入账","hint":"每一档分开列出合计和单据。","totals":"各币别合计","quantities":"货品销量","receipts":"单据","change":"找零 {{amount}}","qty":"{{count}} 件"},"session":{"new":"开新一档","confirmNew":"结束这一档。之后的入账会计入新的一档，这一档的单据会留在列表里。","current":"进行中","unnamed":"未命名摊位","empty":"这一档还没有入账"},"pdf":{"session":"导出这一档 PDF","receipt":"导出这张单据","sessionTitle":"摆摊总单","receiptTitle":"单据","received":"实收","hint":"会生成 PDF。手机请在分享画面选择“存储到文件”。","failed":"PDF 未能生成，请再试一次"},"settings":{"stallName":"摊位名称","stallPlaceholder":"例如：周末市集","saveName":"保存名称","nameSaved":"已保存摊位名称","language":"语言","currencies":"结账币别","baseHint":"港币是标价基准，不能关闭。其他币别可以各自标价；没有标价时，用下面的汇率从港币换算。","rateTitle":"手动汇率","rateHint":"汇率由你自己填写，不会联网抓实时价。填写 100 港币可以换成多少。","per100":"100 港币 =","saveRate":"保存","clearRate":"清除","rateInvalid":"请输入大于 0 的金额","rateSaved":"已保存","rateCleared":"已清除"},"common":{"cancel":"取消","delete":"删除"}},
+      "en": {"appName":"Stall POS","offline":"Data stays on this device. Checkout works without a network.","tabs":{"sell":"Sell","products":"Items","sales":"Sales","settings":"Settings"},"currency":{"HKD":"HKD","CNY":"CNY","USD":"USD","MOP":"MOP","TWD":"TWD","JPY":"JPY","EUR":"EUR","GBP":"GBP","SGD":"SGD","AUD":"AUD","KRW":"KRW","THB":"THB"},"sell":{"emptyTitle":"No items yet","emptyBody":"Add items and prices, then tap them at the stall to build an order.","goProducts":"Add an item"},"price":{"missing":"No price","needRate":"No rate","converted":"Converted"},"cart":{"title":"This order","empty":"Nothing selected yet","clear":"Clear order","checkout":"Save sale","total":"Total","tendered":"Received","change":"Change","exact":"Exact amount","insufficient":"Received is less than the total","needTendered":"Enter the amount received","close":"Close","confirmClear":"Clear this order?","checkedOut":"Saved. Change {{change}}","missingPrice":"{{name}} has no price in this currency","missingRate":"Set a {{currency}} rate in Settings first","cannotAdd":"This item cannot be charged in {{currency}} yet"},"product":{"new":"New item","edit":"Edit item","name":"Name","namePlaceholder":"e.g. sticker, print","prices":"Prices by currency","priceHint":"Leave a currency blank if it has no own price. Checkout will convert the HKD price with your rate.","image":"Photo","pickImage":"Choose photo","removeImage":"Remove photo","save":"Save","delete":"Delete item","deleteConfirm":"This cannot be undone. Sales already recorded stay in the report.","nameRequired":"Enter a name","priceInvalid":"That price format is not valid"},"products":{"empty":"No items yet","add":"New item"},"sales":{"title":"Stall records","empty":"No sales in this stall yet","hint":"Each stall keeps its own totals and receipts.","totals":"Totals by currency","quantities":"Quantity sold","receipts":"Receipts","change":"Change {{amount}}","qty":"{{count}}"},"session":{"new":"Start a new stall","confirmNew":"End this stall. Later sales go to the new one. These receipts stay in the list.","current":"In progress","unnamed":"Unnamed stall","empty":"No sales in this stall yet"},"pdf":{"session":"Export this stall as PDF","receipt":"Export this receipt","sessionTitle":"Stall summary","receiptTitle":"Receipt","received":"Received","hint":"Creates a PDF. On a phone, choose Save to Files in the share sheet.","failed":"Could not create the PDF. Try again."},"settings":{"stallName":"Stall name","stallPlaceholder":"e.g. weekend market","saveName":"Save name","nameSaved":"Stall name saved","language":"Language","currencies":"Checkout currencies","baseHint":"HKD is the base price and stays on. Other currencies can have their own prices. If a price is missing, the rate below converts from HKD.","rateTitle":"Manual rates","rateHint":"You type the rate. The app does not fetch a live rate. Enter how much 100 HKD converts to.","per100":"100 HKD =","saveRate":"Save","clearRate":"Clear","rateInvalid":"Enter an amount greater than 0","rateSaved":"Saved","rateCleared":"Cleared"},"common":{"cancel":"Cancel","delete":"Delete"}}
     };
 
     const KEY = "stall-pos-html-v1";
@@ -179,6 +180,7 @@
     let editor = null;
     let rateNote = "";
     let nameNote = "";
+    let pdfNote = "";
 
     function blankState() {
       return {
@@ -467,6 +469,239 @@
         </div></div>`;
     }
 
+    const PDF_W = 1240;
+    const PDF_H = 1754;
+    const PDF_MARGIN = 72;
+    const PDF_FONT = '"PingFang HK", "Microsoft JhengHei", "Segoe UI", sans-serif';
+
+    function dateLocale() {
+      return state.settings.language === "zh-Hans" ? "zh-CN" : state.settings.language === "en" ? "en-HK" : "zh-HK";
+    }
+    function formatWhen(ts) {
+      return new Intl.DateTimeFormat(dateLocale(), { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(ts);
+    }
+    function pdfFileName(label) {
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+      const safe = String(label || "stall").replace(/[\\/:*?"<>|\u0000-\u001f]/g, "").trim().slice(0, 40) || "stall";
+      return `${safe}-${stamp}.pdf`;
+    }
+    function sessionSales(sessionId) {
+      return state.sales.filter((sale) => sale.sessionId === sessionId).sort((a, b) => a.createdAt - b.createdAt);
+    }
+    function summarize(sales) {
+      const totals = {};
+      const qty = {};
+      for (const sale of sales) {
+        totals[sale.pay] = (totals[sale.pay] || 0) + sale.total;
+        for (const line of sale.lines) {
+          qty[line.id] = qty[line.id] || { name: line.name, count: 0 };
+          qty[line.id].count += line.quantity;
+          qty[line.id].name = line.name;
+        }
+      }
+      return { totals, qty };
+    }
+    function sessionPdf(sessionId) {
+      const session = state.sessions.find((item) => item.id === sessionId);
+      if (!session) return null;
+      const sales = sessionSales(session.id);
+      const { totals, qty } = summarize(sales);
+      const title = session.name.trim() || t("session.unnamed");
+      const range = `${formatWhen(session.startedAt)}${session.closedAt ? ` – ${formatWhen(session.closedAt)}` : ""}`;
+      const lines = [
+        { text: title, size: 52, weight: 800, gap: 6 },
+        { text: t("pdf.sessionTitle"), size: 28, weight: 700, color: "#5e584e", gap: 4 },
+        { text: range, size: 26, weight: 600, color: "#5e584e", gap: 8 },
+        { rule: true }
+      ];
+      lines.push({ text: t("sales.totals"), size: 30, weight: 800, gap: 6 });
+      const totalEntries = Object.entries(totals);
+      if (!totalEntries.length) lines.push({ text: "—", size: 28, weight: 700, gap: 8 });
+      for (const [code, amount] of totalEntries) lines.push({ left: t(`currency.${code}`), right: formatMinor(amount, code), size: 32, weight: 800, color: "#c2410c", gap: 4 });
+      lines.push({ text: t("sales.quantities"), size: 30, weight: 800, gap: 6 });
+      const items = Object.values(qty);
+      if (!items.length) lines.push({ text: "—", size: 28, weight: 700, gap: 8 });
+      for (const item of items) lines.push({ left: item.name, right: t("sales.qty", { count: item.count }), size: 28, weight: 700, gap: 4 });
+      lines.push({ rule: true });
+      lines.push({ text: t("sales.receipts"), size: 30, weight: 800, gap: 8 });
+      if (!sales.length) lines.push({ text: t("session.empty"), size: 26, weight: 600, color: "#5e584e" });
+      sales.forEach((sale, index) => lines.push(...receiptLines(sale, index + 1)));
+      return { lines, filename: pdfFileName(title) };
+    }
+    function salePdf(saleId) {
+      const sale = state.sales.find((item) => item.id === saleId);
+      if (!sale) return null;
+      const session = state.sessions.find((item) => item.id === sale.sessionId);
+      const title = session?.name.trim() || state.settings.stallName.trim() || t("session.unnamed");
+      return { lines: [{ text: title, size: 48, weight: 800, gap: 6 }, { text: t("pdf.receiptTitle"), size: 28, weight: 700, color: "#5e584e", gap: 8 }, { rule: true }, ...receiptLines(sale, 1)], filename: pdfFileName(`${t("pdf.receiptTitle")}-${title}`) };
+    }
+    function receiptLines(sale, index) {
+      const lines = [
+        { text: `${index}. ${formatWhen(sale.createdAt)}`, size: 26, weight: 800, gap: 6 }
+      ];
+      for (const line of sale.lines) lines.push({ left: line.name, right: `× ${line.quantity}`, size: 26, weight: 600, gap: 2 });
+      lines.push({ left: t("cart.total"), right: formatMinor(sale.total, sale.pay), size: 28, weight: 800, gap: 2 });
+      lines.push({ left: t("pdf.received"), right: formatMinor(sale.total + sale.change, sale.pay), size: 26, weight: 700, gap: 2 });
+      lines.push({ left: t("cart.change"), right: formatMinor(sale.change, sale.pay), size: 26, weight: 700, color: "#145c45", gap: 16 });
+      return lines;
+    }
+    function wrapText(ctx, text, maxWidth) {
+      const out = [];
+      let current = "";
+      for (const ch of String(text)) {
+        if (ch === "\n") { out.push(current); current = ""; continue; }
+        const trial = current + ch;
+        if (current && ctx.measureText(trial).width > maxWidth) { out.push(current); current = ch; }
+        else current = trial;
+      }
+      if (current || !out.length) out.push(current);
+      return out;
+    }
+    function drawPdfPages(lines) {
+      const pages = [];
+      let canvas;
+      let ctx;
+      let y = 0;
+      function blank() {
+        if (canvas) pages.push(canvas);
+        canvas = document.createElement("canvas");
+        canvas.width = PDF_W;
+        canvas.height = PDF_H;
+        ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#fffdf8";
+        ctx.fillRect(0, 0, PDF_W, PDF_H);
+        ctx.textBaseline = "top";
+        y = PDF_MARGIN;
+      }
+      function ensure(height) {
+        if (y + height > PDF_H - PDF_MARGIN) blank();
+      }
+      blank();
+      for (const line of lines) {
+        if (line.rule) {
+          ensure(20);
+          ctx.strokeStyle = "#1c1915";
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.moveTo(PDF_MARGIN, y + 8);
+          ctx.lineTo(PDF_W - PDF_MARGIN, y + 8);
+          ctx.stroke();
+          y += 28;
+          continue;
+        }
+        const size = line.size || 28;
+        const lh = Math.round(size * 1.4);
+        ctx.font = `${line.weight || 700} ${size}px ${PDF_FONT}`;
+        ctx.fillStyle = line.color || "#1c1915";
+        if (line.right !== undefined) {
+          ensure(lh);
+          const right = String(line.right);
+          const rightWidth = ctx.measureText(right).width;
+          const leftWidth = PDF_W - PDF_MARGIN * 2 - rightWidth - 24;
+          const parts = wrapText(ctx, line.left, leftWidth);
+          parts.forEach((part, index) => {
+            if (index) ensure(lh);
+            ctx.fillStyle = line.color || "#1c1915";
+            ctx.fillText(part, PDF_MARGIN, y);
+            if (index === 0) ctx.fillText(right, PDF_W - PDF_MARGIN - rightWidth, y);
+            y += lh;
+          });
+          y += line.gap ?? 8;
+          continue;
+        }
+        const parts = wrapText(ctx, line.text, PDF_W - PDF_MARGIN * 2);
+        for (const part of parts) {
+          ensure(lh);
+          ctx.font = `${line.weight || 700} ${size}px ${PDF_FONT}`;
+          ctx.fillStyle = line.color || "#1c1915";
+          ctx.fillText(part, PDF_MARGIN, y);
+          y += lh;
+        }
+        y += line.gap ?? 8;
+      }
+      pages.push(canvas);
+      return pages;
+    }
+    function canvasJpeg(canvas) {
+      const binary = atob(canvas.toDataURL("image/jpeg", 0.92).split(",")[1]);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+      return bytes;
+    }
+    function pdfBytes(pages) {
+      const ascii = (value) => new TextEncoder().encode(value);
+      const chunks = [];
+      let length = 0;
+      const offsets = [];
+      function add(bytes) {
+        chunks.push(bytes);
+        length += bytes.length;
+      }
+      function addText(value) { add(ascii(value)); }
+      addText("%PDF-1.4\n");
+      const ids = pages.map((_, index) => ({ page: 3 + index * 3, content: 4 + index * 3, image: 5 + index * 3 }));
+      const count = 3 + pages.length * 3;
+      function start(id) { offsets[id] = length; }
+      start(1);
+      addText("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+      start(2);
+      addText(`2 0 obj\n<< /Type /Pages /Kids [${ids.map((id) => `${id.page} 0 R`).join(" ")}] /Count ${pages.length} >>\nendobj\n`);
+      pages.forEach((jpeg, index) => {
+        const id = ids[index];
+        const content = `q 595.28 0 0 841.89 0 0 cm /Im${index} Do Q\n`;
+        start(id.page);
+        addText(`${id.page} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents ${id.content} 0 R /Resources << /XObject << /Im${index} ${id.image} 0 R >> >> >>\nendobj\n`);
+        start(id.content);
+        addText(`${id.content} 0 obj\n<< /Length ${content.length} >>\nstream\n${content}endstream\nendobj\n`);
+        start(id.image);
+        addText(`${id.image} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${PDF_W} /Height ${PDF_H} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpeg.length} >>\nstream\n`);
+        add(jpeg);
+        addText("\nendstream\nendobj\n");
+      });
+      const xrefAt = length;
+      let xref = `xref\n0 ${count}\n0000000000 65535 f \n`;
+      for (let id = 1; id < count; id += 1) xref += `${String(offsets[id]).padStart(10, "0")} 00000 n \n`;
+      xref += `trailer\n<< /Size ${count} /Root 1 0 R >>\nstartxref\n${xrefAt}\n%%EOF`;
+      addText(xref);
+      const out = new Uint8Array(length);
+      let cursor = 0;
+      for (const chunk of chunks) { out.set(chunk, cursor); cursor += chunk.length; }
+      return out;
+    }
+    function shareOrSave(bytes, filename) {
+      const file = new File([bytes], filename, { type: "application/pdf" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: filename }).catch((error) => {
+          if (error && error.name === "AbortError") return;
+          savePdfFile(file);
+        });
+        return;
+      }
+      savePdfFile(file);
+    }
+    function savePdfFile(file) {
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = file.name;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    }
+    function exportPdf(kind, id) {
+      try {
+        pdfNote = "";
+        const doc = kind === "session" ? sessionPdf(id) : salePdf(id);
+        if (!doc) return;
+        const pages = drawPdfPages(doc.lines).map(canvasJpeg);
+        shareOrSave(pdfBytes(pages), doc.filename);
+      } catch {
+        pdfNote = t("pdf.failed");
+        render();
+      }
+    }
+
     function salesView() {
       const locale = state.settings.language === "zh-Hans" ? "zh-CN" : state.settings.language === "en" ? "en-HK" : "zh-HK";
       const when = new Intl.DateTimeFormat(locale, { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
@@ -487,17 +722,20 @@
         return `<article class="card session">
           <h2>${esc(title)}${session.closedAt ? "" : `<span class="pill">${t("session.current")}</span>`}</h2>
           <p class="muted">${when.format(session.startedAt)}${session.closedAt ? ` – ${when.format(session.closedAt)}` : ""}</p>
+          <button class="secondary" data-action="pdf-session" data-id="${session.id}">${t("pdf.session")}</button>
           ${sales.length ? "" : `<p class="muted">${t("session.empty")}</p>`}
           <h3 class="muted">${t("sales.totals")}</h3>
           ${Object.entries(totals).map(([code, amount]) => `<div class="totals"><strong>${formatMinor(amount, code)}</strong></div>`).join("") || "<p>—</p>"}
           <h3 class="muted">${t("sales.quantities")}</h3>
           ${Object.values(qty).map((item) => `<div class="row"><span>${esc(item.name)}</span><strong>${esc(t("sales.qty", { count: item.count }))}</strong></div>`).join("") || "<p>—</p>"}
           <h3 class="muted">${t("sales.receipts")}</h3>
-          ${sales.map((sale) => `<div class="card"><div class="row"><span>${when.format(sale.createdAt)}</span><strong>${formatMinor(sale.total, sale.pay)}</strong></div><div class="muted">${esc(t("sales.change", { amount: formatMinor(sale.change, sale.pay) }))}</div>${sale.lines.map((line) => `<div class="muted">${esc(line.name)} × ${line.quantity}</div>`).join("")}</div>`).join("") || "<p>—</p>"}
+          ${sales.map((sale) => `<div class="card"><div class="row"><span>${when.format(sale.createdAt)}</span><strong>${formatMinor(sale.total, sale.pay)}</strong></div><div class="muted">${esc(t("sales.change", { amount: formatMinor(sale.change, sale.pay) }))}</div>${sale.lines.map((line) => `<div class="muted">${esc(line.name)} × ${line.quantity}</div>`).join("")}<button class="secondary" data-action="pdf-sale" data-id="${sale.id}">${t("pdf.receipt")}</button></div>`).join("") || "<p>—</p>"}
         </article>`;
       }).join("");
       return `<section class="view"><div class="pad"><h1>${t("sales.title")}</h1>
         <p class="muted">${t("sales.hint")}</p>
+        <p class="muted">${t("pdf.hint")}</p>
+        ${pdfNote ? `<p class="problem">${esc(pdfNote)}</p>` : ""}
         <button class="primary" data-action="new-session">${t("session.new")}</button>
         ${blocks}
       </div></section>`;
@@ -576,6 +814,8 @@
         }
       }
       if (action === "new-session") startNewSession();
+      if (action === "pdf-session") exportPdf("session", node.dataset.id);
+      if (action === "pdf-sale") exportPdf("sale", node.dataset.id);
       if (action === "save-name") saveStallName();
       if (action === "lang") { state.settings.language = node.dataset.code; notice = ""; save(); render(); }
       if (action === "toggle" && node.dataset.code !== "HKD") {
